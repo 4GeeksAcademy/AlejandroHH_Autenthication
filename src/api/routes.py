@@ -4,6 +4,9 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User
 from api.utils import generate_sitemap, APIException
+from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
+
+
 
 api = Blueprint('api', __name__)
 
@@ -16,3 +19,51 @@ def handle_hello():
     }
 
     return jsonify(response_body), 200
+
+@api.route('/signup', methods=['POST'])
+def signup():
+    data = request.get_json()
+    name = data.get('name')
+    email = data.get('email')
+    password = data.get('password')
+    is_active = data.get('is_active')
+
+    signUp = User(name = name, email = email, password = password, is_active = is_active)
+    print(signUp)
+
+    if not signUp:
+        return jsonify({"message": "Complete the fields!"}), 400
+
+    db.session.add(signUp)
+    db.session.commit()
+
+    return jsonify({"message":"You have been successfully registered!"}), 200
+
+
+@api.route('/login', methods=['POST'])
+def login():
+
+    data = request.json
+    email = data.get('email')
+    password = data.get('password')
+
+    if not email or not password:
+        return jsonify({"message": "Complete the fields!"}), 400
+    user = User.query.filter_by(email=email, password=password).first()
+    
+    if not user:
+        return jsonify({"message": "Error, this user doesn't exist"})
+    token = create_access_token(identity = user.email)
+
+    return jsonify({"Your token is " : token}), 200
+
+@api.route('/private', methods=['POST'])
+@jwt_required()
+def private():
+    data = request.json
+    userID = get_jwt_identity()
+
+    user = User.query.get(userID)
+    print(user)
+    
+    return jsonify({"message":"Enjoy your subscription!"})

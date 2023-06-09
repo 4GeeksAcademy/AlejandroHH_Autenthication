@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback, useContext } from 'react'
 import "../../styles/login&register.css";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -7,8 +7,12 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
+import { Context } from '../store/appContext';
+
+
 
 export const Login = () => {
+  const {actions, store} = useContext(Context)
 
   const navigate = useNavigate()
 
@@ -37,7 +41,14 @@ export const Login = () => {
       const token = response.user_token;
       sessionStorage.token = token
       console.log(token)
-      navigate("/private")
+
+      if(token){
+        actions.saveToken(token)
+        navigate("/private")
+      } else{
+        navigate("/123123")
+      }
+      
       Swal.fire(
         'Good job!',
         "You've been registered!",

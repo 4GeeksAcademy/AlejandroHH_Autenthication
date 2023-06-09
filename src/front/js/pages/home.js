@@ -14,6 +14,7 @@ export const Home = () => {
 			<div>
 				<Link to={"/signup/"}>Register</Link>
 				<Link to={"/login/"}>Login</Link>
+				<Link to={"/private/"}>Private</Link>
 
 			</div>
 			<p>

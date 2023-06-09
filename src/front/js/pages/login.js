@@ -46,7 +46,7 @@ export const Login = () => {
         actions.saveToken(token)
         navigate("/private")
       } else{
-        navigate("/123123")
+        navigate("/not-found-404")
       }
       
       Swal.fire(

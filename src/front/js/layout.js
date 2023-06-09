@@ -15,6 +15,7 @@ import { Signup } from "./pages/signup";
 import { Private } from "./pages/private";
 import { useContext } from "react";
 import { Context } from "./store/appContext";
+import { NotFound404 } from "./pages/not-found-404";
 
 //create your first component
 const Layout = () => {
@@ -35,7 +36,8 @@ const Layout = () => {
                         <Route path="/login" element={<Login/>} />
                         <Route path="/signup" element={<Signup/>} />
                         <Route path="/private"
-                        element={store.token !== undefined ? <Private /> : <Home/>}/> 
+                        element={store.token !== undefined ? <Private /> : <NotFound404/>}/> 
+                        <Route element={<NotFound404/>} path="/not-found-404" />
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<Single />} path="/single/:theid" />
                         <Route element={<h1>Not found!</h1>} />

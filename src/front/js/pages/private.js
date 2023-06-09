@@ -1,11 +1,20 @@
 import React from 'react'
-import { useEffect } from 'react'
+import { useEffect, useState, useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
+
+import { Context } from '../store/appContext'
 
 
 
 export const Private = () => {
+  const navigate = useNavigate()
+
+  const {actions, store} = useContext(Context)
+
+  const [token, setToken] = useState()
+
   useEffect(() => {
-    const token = sessionStorage.getItem("token");
+    setToken(sessionStorage.getItem("token"));
 
     
     const postConfig = {
@@ -26,14 +35,29 @@ export const Private = () => {
     })
   }, [])
 
+  const deleteToken = () => {
+    sessionStorage.removeItem("token");
+    setToken(null);
+    navigate("/login")
+    
+  }
+
+
+
     return (
       <>
         <div className='box'>
-          <h1>WelcomeEEEEEEEE</h1>
-          <h1>WelcomeEEEEEEEE</h1>
-          <h1>WelcomeEEEEEEEE</h1>
-          <h1>WelcomeEEEEEEEE</h1>
-          <h1>WelcomeEEEEEEEE</h1>
+          <div className='cabecera'>
+            <button onClick={deleteToken}>Sign Out</button>
+          </div>
+          <div className='bienvenida'>
+            <h1>WelcomeEEEEEEEE</h1>
+            <h1>WelcomeEEEEEEEE</h1>
+            <h1>WelcomeEEEEEEEE</h1>
+            <h1>WelcomeEEEEEEEE</h1>
+            <h1>WelcomeEEEEEEEE</h1>
+          </div>
+          
         </div>
           
       </>

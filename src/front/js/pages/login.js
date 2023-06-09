@@ -45,27 +45,27 @@ export const Login = () => {
       if(token){
         actions.saveToken(token)
         navigate("/private")
-      } else{
-        navigate("/not-found-404")
+
+        Swal.fire(
+          'Good job!',
+          "You've been logged in!",
+          'success'
+        )
+
+
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: '400',
+          text: 'Complete the fields!'
+        });
+        navigate('/not-found-404').catch((error) => {
+          console.error(error);
+         
+        });
       }
-      
-      Swal.fire(
-        'Good job!',
-        "You've been registered!",
-        'success'
-      )
-    })
-    .catch(error => {
-      console.error(error);
-      Swal.fire({
-        icon: 'error',
-        title: '400',
-        text: 'Complete the fields!',
-      });
     });
-    
-  
-  }
+};
 
   return (
     <div className='body'>

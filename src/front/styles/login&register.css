@@ -1,17 +1,90 @@
-/* 
-    General Styles used on every website (Don't Repeat Yourself)
-*/
-
-body{
+.body{
+    display:flex;
+    justify-content: center;
+    align-items: center;
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1920' height='1080' preserveAspectRatio='none' viewBox='0 0 1920 1080'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1041%26quot%3b)' fill='none'%3e%3crect width='1920' height='1080' x='0' y='0' fill='url(%26quot%3b%23SvgjsLinearGradient1042%26quot%3b)'%3e%3c/rect%3e%3cpath d='M1920 0L1406.76 0L1920 337.05z' fill='rgba(255%2c 255%2c 255%2c .1)'%3e%3c/path%3e%3cpath d='M1406.76 0L1920 337.05L1920 374.22L683.03 0z' fill='rgba(255%2c 255%2c 255%2c .075)'%3e%3c/path%3e%3cpath d='M683.03 0L1920 374.22L1920 747.02L580.46 0z' fill='rgba(255%2c 255%2c 255%2c .05)'%3e%3c/path%3e%3cpath d='M580.46 0L1920 747.02L1920 883.8399999999999L497.84000000000003 0z' fill='rgba(255%2c 255%2c 255%2c .025)'%3e%3c/path%3e%3cpath d='M0 1080L2.03 1080L0 986.63z' fill='rgba(0%2c 0%2c 0%2c .1)'%3e%3c/path%3e%3cpath d='M0 986.63L2.03 1080L303.86999999999995 1080L0 580.88z' fill='rgba(0%2c 0%2c 0%2c .075)'%3e%3c/path%3e%3cpath d='M0 580.88L303.86999999999995 1080L694.1999999999999 1080L0 342.6z' fill='rgba(0%2c 0%2c 0%2c .05)'%3e%3c/path%3e%3cpath d='M0 342.6L694.1999999999999 1080L1401.73 1080L0 287.92z' fill='rgba(0%2c 0%2c 0%2c .025)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1041'%3e%3crect width='1920' height='1080' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='50%25' y1='0%25' x2='50%25' y2='100%25' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient1042'%3e%3cstop stop-color='%230e2a47' offset='0'%3e%3c/stop%3e%3cstop stop-color='%2300459e' offset='1'%3e%3c/stop%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e");
-    font-family: 'Nunito', sans-serif;
-
-
+    min-height: 100vh;
 }
 
-.box{
+.containerr{
+    position: relative;
+    height: 40rem;
+    width: 34rem;
+    background:transparent;
+    border: 2px solid rgba(255, 255, 255, 1);
+    border-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    background: rgba( 255, 255, 255, 0.25 );
+    background: rgba( 255, 255, 255, 0.05 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4.5px );
+    -webkit-backdrop-filter: blur( 4.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.input-box{
+    position: relative;
+    margin: 40px 0;
+    width: 30rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h2{
+    text-align:center;
+    font-size: 2rem;
+    color: deepskyblue;
+}
+
+.input-box input{
+    display: block;
+    padding: 10px;
+    border: none;
+    outline: none;
+    padding: 0 35px 0 5px;
+    height: 3.13rem;
+    width: 90%;
+    border-radius: 4px;
+    background: transparent;
+    border: 2px solid white;
     color: white;
+}
+
+label{
+    position: absolute;
+    top: -25px;
+    left: 30px;
+    line-height: 16px;
+    display: inline-flex;
+    column-gap: 10px;
+    transition: transform .25s;
+    color: white;
+    opacity: .25s;
+}
+
+
+
+.input-box:focus-within label,
+.input-box:valid ~ label {
+    transform: translateX(160px);
+    color: skyblue;
+    font-weight: bold;
+}
+
+.input-box:focus-within FontAwesomeIcon::before,
+.input-box:valid ~ FontAwesomeIcon::before {
+    opacity: 1;
+    transition-delay: .1s;
+}
+
+.btn-info{
+
+    font-size: 20px;
+    width: 80%;
+   
 }

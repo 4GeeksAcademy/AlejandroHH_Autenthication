@@ -12,7 +12,9 @@ export const Home = () => {
 		<div className="text-center mt-5">
 			<h1>Hello Rigo!!</h1>
 			<div>
-				<Link to={"/login/"}>here</Link>
+				<Link to={"/signup/"}>Register</Link>
+				<Link to={"/login/"}>Login</Link>
+
 			</div>
 			<p>
 				<img src={rigoImageUrl} />

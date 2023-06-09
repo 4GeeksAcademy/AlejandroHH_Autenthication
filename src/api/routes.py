@@ -42,7 +42,7 @@ def signup():
 
 @api.route('/login', methods=['POST'])
 def login():
-
+    
     data = request.json
     email = data.get('email')
     password = data.get('password')
@@ -53,17 +53,26 @@ def login():
     
     if not user:
         return jsonify({"message": "Error, this user doesn't exist"})
-    token = create_access_token(identity = user.email)
+    
 
-    return jsonify({"Your token is " : token}), 200
+    if user.password != password:
+         return jsonify({"message":"Incorrect password"})
+    
+
+    token = create_access_token(identity = user.email)
+    return jsonify({"user_token": token}), 200
+
+    
 
 @api.route('/private', methods=['POST'])
 @jwt_required()
 def private():
-    data = request.json
-    userID = get_jwt_identity()
 
-    user = User.query.get(userID)
-    print(user)
-    
-    return jsonify({"message":"Enjoy your subscription!"})
+        data = request.json
+        userID = get_jwt_identity()
+        print(userID)
+
+        user = User.query.get(userID)
+        print(user)
+        
+        return jsonify({"message":"Enjoy your subscription!"})

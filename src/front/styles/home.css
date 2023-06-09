@@ -6,3 +6,34 @@
     on that page only (the ones not reused in other pages).
 */
 
+
+
+h1 span{
+    color: rgb(14, 88, 152);
+    font-weight: bold;
+    background-color:  skyblue;
+    padding: 5px 20px;
+    border-radius: 15px;
+    
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    
+  }
+
+h5{
+    color: rgb(85, 186, 226) ;
+
+}
+
+h5 span:hover{
+    background-color: rgb(85, 186, 226);
+    color: rgb(13, 56, 106);
+    padding: 5px 20px;
+    border-radius: 15px;
+
+}
+

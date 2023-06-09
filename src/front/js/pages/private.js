@@ -38,7 +38,9 @@ export const Private = () => {
   const deleteToken = () => {
     sessionStorage.removeItem("token");
     setToken(null);
+
     navigate("/login")
+    window.location.reload();
     
   }
 
@@ -47,17 +49,16 @@ export const Private = () => {
     return (
       <>
         <div className='box'>
-          <div className='cabecera'>
-            <button onClick={deleteToken}>Sign Out</button>
-          </div>
-          <div className='bienvenida'>
-            <h1>WelcomeEEEEEEEE</h1>
-            <h1>WelcomeEEEEEEEE</h1>
-            <h1>WelcomeEEEEEEEE</h1>
-            <h1>WelcomeEEEEEEEE</h1>
-            <h1>WelcomeEEEEEEEE</h1>
-          </div>
           
+          <div className='bienvenida'>
+            <h1 className='text-center'>Enjoy the meme</h1>
+            <div>
+              <img src="https://i.pinimg.com/564x/20/8f/d9/208fd953192924fd310f0cb0068ab364.jpg" />
+            </div>
+          </div>
+          <div className='cabecera'>
+            <button className='btn btn-danger' onClick={deleteToken}>Sign Out</button>
+          </div>
         </div>
           
       </>

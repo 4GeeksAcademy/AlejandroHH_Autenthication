@@ -2,9 +2,9 @@ import React, { Component } from "react";
 
 export const Footer = () => (
 	<footer className="footer mt-auto py-3 text-center">
-		<p>
+		<p style={{color: "white"}}>
 			Made with <i className="fa fa-heart text-danger" /> by{" "}
-			<a href="http://www.4geeksacademy.com">4Geeks Academy</a>
+			<a  href="https://github.com/Alejandro-Hipolito">Alejandro David Hipólito</a>
 		</p>
 	</footer>
 );

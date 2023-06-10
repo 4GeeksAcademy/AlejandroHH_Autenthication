@@ -15,25 +15,29 @@ export const Private = () => {
 
   useEffect(() => {
     setToken(sessionStorage.getItem("token"));
-
+  
+    const postFetch = async () => {
+      if (token) {
+        const postConfig = {
+          method: "POST",
+          body: JSON.stringify(),
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          }
+        }
     
-    const postConfig = {
-      method: "POST",
-      body: JSON.stringify(),
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
+        fetch(process.env.BACKEND_URL + 'api/private', postConfig)
+          .then(response => response.json())
+          .then((response) => {
+            console.log(response);
+          });
       }
-  
     }
+    
+    
+  }, []); // 
   
-    fetch(process.env.BACKEND_URL + 'api/private', postConfig)
-    .then(response => response.json(token))
-    .then((response) => {
-      
-        console.log(response)
-    })
-  }, [])
 
   const deleteToken = () => {
     sessionStorage.removeItem("token");

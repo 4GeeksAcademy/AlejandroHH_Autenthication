@@ -27,11 +27,13 @@ export const Private = () => {
           }
         }
     
-        fetch(process.env.BACKEND_URL + 'api/private', postConfig)
-          .then(response => response.json())
-          .then((response) => {
-            console.log(response);
-          });
+        const response = await fetch(process.env.BACKEND_URL + 'api/private', postConfig)
+          const data = await  response.json()
+          console.log(data)
+          
+          .catch(error => {
+            console.error(error)
+          })
       }
     }
     

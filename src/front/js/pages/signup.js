@@ -32,7 +32,7 @@ export const Signup = () => {
 
     }
 
-    fetch(process.env.BACKEND_URL + '/api/signup', postConfig)
+    fetch(process.env.BACKEND_URL + 'api/signup', postConfig)
     .then(response => response.json())
     .then((response) => {
       navigate("/login")
